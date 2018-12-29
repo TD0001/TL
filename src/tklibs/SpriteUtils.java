@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by huynq on 5/11/17.
@@ -39,5 +40,15 @@ public class SpriteUtils {
         }
 
         return returnImage;
+    }
+    public static ArrayList<BufferedImage> loadImages(String dirUrl) {
+        File directory = new File(dirUrl);
+        ArrayList<BufferedImage> result = new ArrayList<>();
+        if(directory.isDirectory()) {
+            for(File file : directory.listFiles()) {
+                result.add(loadImage(file.toPath().toString()));
+            }
+        }
+        return result;
     }
 }

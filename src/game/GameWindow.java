@@ -1,6 +1,7 @@
 package game;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -10,16 +11,20 @@ public class GameWindow extends JFrame {
     public static boolean isLeftPress;
     public static boolean isRightPress;
     public static boolean isFirePress;
+    public static boolean isAnyKeyPress;
+
     GameCanvas canvas;
 
     public GameWindow() {
-        this.setSize(settings.screen_width, settings.screen_height);
-        this.setTitle("Game Touhou");
+
+        this.setTitle("Tao không vào địa ngục thì ai");
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         this.canvas = new GameCanvas();
+        this.canvas.setPreferredSize(new Dimension(settings.screen_width, settings.screen_height));
         this.add(canvas);
+        this.pack();
         this.setupEventListener();
         this.setVisible(true);
 
@@ -29,6 +34,7 @@ public class GameWindow extends JFrame {
         this.addKeyListener(new KeyAdapter() {// new  KeyAdapter   roi an Alt + Enter
             @Override
             public void keyPressed(KeyEvent e) {
+                isAnyKeyPress = true;
                 if (e.getKeyCode() == KeyEvent.VK_W){
                     GameWindow.isUpPress = true;
                 }
@@ -48,6 +54,7 @@ public class GameWindow extends JFrame {
             // giu phim
             @Override
             public void keyReleased(KeyEvent e) {
+                isAnyKeyPress = false;
                 if (e.getKeyCode() == KeyEvent.VK_W) {
                     GameWindow.isUpPress = false;
                 }

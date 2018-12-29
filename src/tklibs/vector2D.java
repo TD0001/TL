@@ -24,6 +24,9 @@ public class vector2D {
         this.y = y;
         return this;
 }
+    public vector2D clone(){
+        return new vector2D(this.x, this.y);
+    }
     public vector2D set(vector2D other){
         return this.set(other.x,other.y);
     }
@@ -33,7 +36,7 @@ public class vector2D {
         return this;
     }
     public vector2D subtractThis(vector2D other) {
-        return this.set(other.x, other.y);
+        return this.subtractThis(other.x, other.y);
     }
     public vector2D scaleThis(float rate){
         this.x *= rate;

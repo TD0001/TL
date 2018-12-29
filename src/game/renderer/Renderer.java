@@ -4,9 +4,11 @@ import game.GameObject;
 
 import java.awt.*;
 
-public class Renderer {
-    public void render(Graphics g, GameObject master){
+public abstract class Renderer {
+    public abstract void render(Graphics g, GameObject master);
 
+    public void reset(){
 
     }
+
 }
