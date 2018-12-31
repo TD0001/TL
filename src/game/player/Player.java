@@ -49,10 +49,10 @@ public class Player extends GameObject implements Physics {
     private void fire() {
 
         if (this.fireCounter.count()) {
-            float angle = (float) (-Math.PI / 8);
-            float offset = (float) (Math.PI / 8);
+            float angle = (float) (-Math.PI / 4);
+            float offset = (float) (Math.PI / 4);
 
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 10; i++) {
                 if (GameWindow.isFirePress) {
                     PlayerBulletType1 bullet = GameObject.recycleGameObjects(PlayerBulletType1.class);
                     bullet.position.set(this.position);
